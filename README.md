@@ -1,74 +1,295 @@
-\# Sistem Absensi Karyawan
+<div align="center">
 
+# 🚀 Human Resource Management (HRM) System
 
+# Modern Human Resource Management System for Employee Administration, Attendance, Leave Management, and Payroll
 
-Aplikasi sistem informasi absensi karyawan berbasis mobile dan web yang digunakan untuk mengelola data karyawan, absensi, laporan kehadiran, dan penggajian.
+<p>
+  <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Firebase-FCM-orange?logo=firebase" />
+  <img src="https://img.shields.io/badge/License-Educational-green" />
+</p>
 
+_A full-stack Human Resource Management System built with Flutter, Next.js, Laravel REST API, and MySQL._
 
+</div>
 
-\## Deskripsi Project
+---
 
+✨ Overview
 
+The Human Resource Management (HRM) System is a full-stack application designed to streamline employee administration within an organization.
 
-Project ini dibuat untuk Project Based Learning (PBL) dengan tujuan membangun sistem absensi karyawan yang terintegrasi antara aplikasi mobile Flutter dengan REST API Laravel dan dashboard web.
+The system consists of:
 
+- 📱 Mobile Application (Flutter)
+- 🌐 Admin Dashboard (Next.js)
+- ⚙️ REST API Backend (Laravel)
+- 🗄️ MySQL Database
+- 🔔 Firebase Cloud Messaging
 
+It helps companies digitize employee attendance, leave requests, payroll management, and employee records.
 
-\## Teknologi yang Digunakan
+---
 
+📸 Application Preview
 
+🖥️ Admin Dashboard
 
-\- Flutter (Mobile Application)
+> Replace these images with your screenshots.
 
-\- Laravel REST API (Backend)
+| Dashboard                             | Employees                             |
+| ------------------------------------- | ------------------------------------- |
+| ![](assets/screenshots/dashboard.png) | ![](assets/screenshots/employees.png) |
 
-\- MySQL (Database)
+| Attendance                             | Payroll                             |
+| -------------------------------------- | ----------------------------------- |
+| ![](assets/screenshots/attendance.png) | ![](assets/screenshots/payroll.png) |
 
-\- Next.js (Web Dashboard)
+---
 
-\- Git \& GitHub
+## 📱 Mobile Application
 
+| Login                                    | Dashboard                                    |
+| ---------------------------------------- | -------------------------------------------- |
+| ![](assets/screenshots/mobile-login.png) | ![](assets/screenshots/mobile-dashboard.png) |
 
+| Attendance                                    | Profile                                    |
+| --------------------------------------------- | ------------------------------------------ |
+| ![](assets/screenshots/mobile-attendance.png) | ![](assets/screenshots/mobile-profile.png) |
 
-\## Fitur Sistem
+---
 
+🚀 Features
 
+# 📱 Mobile Application
 
-\### Mobile App
+- 🔐 Authentication
+- 📍 GPS Attendance (Check In / Check Out)
+- 🕒 Attendance History
+- 📝 Leave Request
+- 📄 Leave Request History
+- 💰 Payroll Information
+- 👤 Employee Profile
+- ✏️ Edit Profile
+- 🔔 Push Notification (FCM)
 
-\- Login pengguna
+---
 
-\- Data karyawan
+# 🌐 Admin Dashboard
 
-\- Absensi masuk dan pulang
+- 📊 Dashboard Analytics
+- 👨‍💼 Employee Management (CRUD)
+- 📅 Attendance Management
+- ✅ Leave Approval
+- 💰 Payroll Management
+- 📈 Attendance Report
+- 📑 Employee Report
 
-\- Pengambilan lokasi GPS
+---
 
-\- Riwayat absensi
+# ⚙️ Backend API
 
+- REST API
+- JWT Authentication
+- Employee API
+- Attendance API
+- Leave Request API
+- Payroll API
+- Firebase Cloud Messaging
+- MySQL Integration
 
+---
 
-\### Web Dashboard
+# 🛠 Tech Stack
 
-\- Login admin
+| Category     | Technology               |
+| ------------ | ------------------------ |
+| Frontend     | Next.js                  |
+| Backend      | Laravel                  |
+| Mobile       | Flutter                  |
+| Database     | MySQL                    |
+| API          | REST API                 |
+| Notification | Firebase Cloud Messaging |
+| Language     | TypeScript, PHP, Dart    |
 
-\- Manajemen data karyawan
+---
 
-\- Rekap absensi
+# 🏗 System Architecture
 
-\- Laporan kehadiran
+```text
+             Flutter Mobile
+                   │
+                   │ REST API
+                   ▼
+            Laravel Backend
+                   │
+        ┌──────────┴──────────┐
+        ▼                     ▼
+    MySQL Database      Firebase FCM
+                   ▲
+                   │
+             Next.js Admin
+```
 
-\- Export laporan
+---
 
+# 📂 Project Structure
 
+```text
+HRM-System
+│
+├── backend-laravel
+│   ├── app
+│   ├── routes
+│   ├── database
+│   └── ...
+│
+├── mobile-flutter
+│   ├── lib
+│   ├── assets
+│   └── ...
+│
+├── web-nextjs
+│   ├── app
+│   ├── components
+│   ├── lib
+│   ├── public
+│   └── ...
+│
+└── README.md
+```
 
-\## Developer
+---
 
+# ⚙️ Installation
 
+## Clone Repository
 
-\*\*Elsa Mariva Sianturi\*\*
+```bash
+git clone https://github.com/selsamariva-byte/pbl-sistem-absensi-karyawan.git
+```
 
-D3 Manajemen Informatika
+```
+cd hrm-system
+```
 
-Politeknik Negeri Malang
+---
 
+# Backend Setup
+
+```bash
+composer install
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan serve --host=0.0.0.0 --port=9000
+```
+
+---
+
+# Next.js Setup
+
+```bash
+cd web-nextjs
+
+npm install
+
+npm run dev
+```
+
+---
+
+# Flutter Setup
+
+```bash
+cd mobile-flutter
+
+flutter pub get
+
+flutter run
+```
+
+---
+
+# 🗄 Database
+
+Main Tables
+
+- employees
+- attendances
+- leave_requests
+- payrolls
+
+Database Relationship
+
+```text
+Employees
+   │
+   ├──────── Attendances
+   │
+   ├──────── Leave Requests
+   │
+   └──────── Payrolls
+```
+
+---
+
+# 📊 Modules
+
+| Module            | Status |
+| ----------------- | ------ |
+| Authentication    | ✅     |
+| Dashboard         | ✅     |
+| Employee CRUD     | ✅     |
+| Attendance        | ✅     |
+| Leave Request     | ✅     |
+| Payroll           | ✅     |
+| Reports           | ✅     |
+| Push Notification | ✅     |
+
+---
+
+# 📌 Future Improvements
+
+- Email Notification
+- Face Recognition Attendance
+- Dark Mode
+- Multi Company Support
+- Role Permission Management
+- Export PDF Report
+- Real-Time Dashboard
+
+---
+
+# 👨‍💻 Development Team
+
+**Project Based Learning (PBL)**
+
+Department of Informatics Management
+
+**Politeknik Negeri Malang**
+
+---
+
+# 📄 License
+
+This project was developed for educational purposes as part of the Project Based Learning (PBL) course.
+
+---
+
+<div align="center">
+
+If you find this project useful, don't forget to give it a star!
+
+Made by **Elsa Mariva Sianturi**
+
+</div>

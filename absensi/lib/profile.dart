@@ -7,19 +7,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:absensi/config/config.dart';
 
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-
-  State<ProfilePage> createState() =>
-      _ProfilePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState
-    extends State<ProfilePage> {
-
+class _ProfilePageState extends State<ProfilePage> {
   String nama = "";
   String role = "";
   String nip = "";
@@ -45,9 +40,7 @@ class _ProfilePageState
     print("Employee ID = $employeeId");
 
     final response = await http.get(
-      Uri.parse(
-        "${ApiConfig.baseUrl}/employees/$employeeId",
-      ),
+      Uri.parse("${ApiConfig.baseUrl}/employees/$employeeId"),
     );
 
     print(response.body);
@@ -67,10 +60,7 @@ class _ProfilePageState
         joinDate = employee["join_date"] ?? "";
         fotoProfile = employee["foto"] ?? "";
         print("Foto dari database: $fotoProfile");
-        profileLengkap =
-            nama.isNotEmpty &&
-            nip.isNotEmpty &&
-            role.isNotEmpty;
+        profileLengkap = nama.isNotEmpty && nip.isNotEmpty && role.isNotEmpty;
       });
     }
   }
@@ -78,47 +68,30 @@ class _ProfilePageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          const Color(0xfff5f7fb),
+      backgroundColor: const Color(0xfff5f7fb),
 
       appBar: AppBar(
-        title: const Text(
-          "My Profile",
-        ),
+        title: const Text("My Profile"),
         centerTitle: true,
-        backgroundColor:
-            const Color(0xff0d6efd),
-        foregroundColor:
-            Colors.white,
+        backgroundColor: const Color(0xff0d6efd),
+        foregroundColor: Colors.white,
         elevation: 0,
       ),
 
       body: ListView(
-        padding:
-            const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
-
           // HEADER PROFILE
           Container(
-            padding:
-                const EdgeInsets.all(
-                    24),
-            decoration:
-                BoxDecoration(
-              gradient:
-                  const LinearGradient(
-                colors: [
-                  Color(0xff0d6efd),
-                  Color(0xff4da3ff),
-                ],
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xff0d6efd), Color(0xff4da3ff)],
               ),
-              borderRadius:
-                  BorderRadius.circular(
-                      24),
+              borderRadius: BorderRadius.circular(24),
             ),
             child: Column(
               children: [
-
                 CircleAvatar(
                   radius: 55,
                   backgroundColor: Colors.white,
@@ -128,50 +101,34 @@ class _ProfilePageState
                         )
                       : null,
                   child: fotoProfile.isEmpty
-                      ? const Icon(
-                          Icons.person,
-                          size: 55,
-                          color: Colors.grey,
-                        )
+                      ? const Icon(Icons.person, size: 55, color: Colors.grey)
                       : null,
                 ),
 
                 SizedBox(height: 14),
 
                 Text(
-                  nama.isEmpty
-                      ? "Employee Name"
-                      : nama,
+                  nama.isEmpty ? "Employee Name" : nama,
 
                   style: TextStyle(
-                    color:
-                        Colors.white,
+                    color: Colors.white,
                     fontSize: 22,
-                    fontWeight:
-                        FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
 
                 SizedBox(height: 6),
 
                 Text(
-                  role.isEmpty
-                    ? "Complete Your Profile"
-                    : role,
-                  style: TextStyle(
-                    color:
-                        Colors.white70,
-                  ),
+                  role.isEmpty ? "Complete Your Profile" : role,
+                  style: TextStyle(color: Colors.white70),
                 ),
 
                 SizedBox(height: 4),
 
                 Text(
                   "ID : ${nip.isEmpty ? "-" : nip}",
-                  style: TextStyle(
-                    color:
-                        Colors.white70,
-                  ),
+                  style: TextStyle(color: Colors.white70),
                 ),
               ],
             ),
@@ -181,44 +138,20 @@ class _ProfilePageState
 
           const Text(
             "Personal Information",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight:
-                  FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
 
           const SizedBox(height: 14),
 
-          infoCard(
-            Icons.email,
-            "Email",
-            email,
-          ),
+          infoCard(Icons.email, "Email", email),
 
-          infoCard(
-            Icons.phone,
-            "Phone",
-            hp,
-          ),
+          infoCard(Icons.phone, "Phone", hp),
 
-          infoCard(
-            Icons.location_on,
-            "Address",
-            address,
-          ),
+          infoCard(Icons.location_on, "Address", address),
 
-          infoCard(
-            Icons.work,
-            "Division",
-            division,
-          ),
+          infoCard(Icons.work, "Division", division),
 
-          infoCard(
-            Icons.calendar_month,
-            "Join Date",
-            joinDate,
-          ),
+          infoCard(Icons.calendar_month, "Join Date", joinDate),
 
           const SizedBox(height: 20),
 
@@ -227,37 +160,23 @@ class _ProfilePageState
             onPressed: () async {
               await Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => const FormPegawaiPage(),
-                ),
+                MaterialPageRoute(builder: (_) => const FormPegawaiPage()),
               );
 
               getData();
             },
-            style:
-                ElevatedButton.styleFrom(
-              backgroundColor:
-                  const Color(
-                      0xff0d6efd),
-              minimumSize:
-                  const Size(
-                      double.infinity,
-                      55),
-              shape:
-                  RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius
-                        .circular(
-                            16),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xff0d6efd),
+              minimumSize: const Size(double.infinity, 55),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
             ),
             child: Text(
               profileLengkap ? "EDIT PROFILE" : "LENGKAPI PROFILE",
               style: TextStyle(
-                color:
-                    Colors.white,
-                fontWeight:
-                    FontWeight.bold,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -266,9 +185,7 @@ class _ProfilePageState
 
           OutlinedButton(
             onPressed: () async {
-
-              final prefs =
-                  await SharedPreferences.getInstance();
+              final prefs = await SharedPreferences.getInstance();
 
               await prefs.clear();
 
@@ -276,38 +193,20 @@ class _ProfilePageState
 
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(
-                  builder: (_) =>
-                      const MyApp(),
-                ),
+                MaterialPageRoute(builder: (_) => const MyApp()),
                 (route) => false,
               );
             },
-            style:
-                OutlinedButton.styleFrom(
-              side: const BorderSide(
-                color:
-                    Colors.red,
-              ),
-              minimumSize:
-                  const Size(
-                      double.infinity,
-                      55),
-              shape:
-                  RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius
-                        .circular(
-                            16),
+            style: OutlinedButton.styleFrom(
+              side: const BorderSide(color: Colors.red),
+              minimumSize: const Size(double.infinity, 55),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
             ),
             child: const Text(
               "LOGOUT",
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight:
-                    FontWeight.bold,
-              ),
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -315,76 +214,38 @@ class _ProfilePageState
     );
   }
 
-  Widget infoCard(
-    IconData icon,
-    String title,
-    String value,
-  ) {
+  Widget infoCard(IconData icon, String title, String value) {
     return Container(
-      margin:
-          const EdgeInsets.only(
-              bottom: 12),
-      padding:
-          const EdgeInsets.all(
-              16),
-      decoration:
-          BoxDecoration(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius:
-            BorderRadius.circular(
-                18),
-        boxShadow: const [
-          BoxShadow(
-            color:
-                Colors.black12,
-            blurRadius: 5,
-          )
-        ],
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5)],
       ),
       child: Row(
         children: [
-
           CircleAvatar(
-            backgroundColor:
-                const Color(
-                    0xffeaf3ff),
-            child: Icon(
-              icon,
-              color:
-                  const Color(
-                      0xff0d6efd),
-            ),
+            backgroundColor: const Color(0xffeaf3ff),
+            child: Icon(icon, color: const Color(0xff0d6efd)),
           ),
 
           const SizedBox(width: 14),
 
           Expanded(
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment
-                      .start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Text(
                   title,
-                  style:
-                      const TextStyle(
-                    color:
-                        Colors.grey,
-                    fontSize: 13,
-                  ),
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
                 ),
 
-                const SizedBox(
-                    height: 4),
+                const SizedBox(height: 4),
 
                 Text(
                   value,
-                  style:
-                      const TextStyle(
-                    fontWeight:
-                        FontWeight.bold,
-                  ),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
